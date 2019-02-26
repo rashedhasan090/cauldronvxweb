@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\MonthlyReminder ; 
 
-class dailyreminder extends Controller
+class monthlyReminderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class dailyreminder extends Controller
      */
     public function index()
     {
-        return view ('daily_reminder.index'); 
+        return view ('monthly_rem.index'); 
     }
 
     /**
@@ -34,7 +35,17 @@ class dailyreminder extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $monthlyreminder = new MonthlyReminder ; 
+        $monthlyreminder->whichmonth = $request->input('whichmonth');
+        $monthlyreminder->monthday = $request -> input ('monthday');
+        $monthlyreminder->yourevent = $request -> input('yourevent');
+        $monthlyreminder->relatedtowork = $request->input('relatedtowork');
+        $monthlyreminder->note = $request->input('note');
+       
+        $monthlyreminder->save(); 
+
+       
+         return redirect()->back()->with('success', 'Your Reminder has been saved');
     }
 
     /**

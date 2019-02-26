@@ -52,12 +52,12 @@ Route::get('/sharing', 'dashController@sharing');
 
 
 Route:: resource ('posts', 'PostsController');
-
+Route:: resource ('monthly_rem', 'monthlyReminderController');
+Route:: resource ('daily_rem', 'dailyreminderController');
 Route:: resource ('pages_inside', 'PersonalScheduleMaintain');
-
+Route:: resource ('yearly_reminder', 'YearlyReminderController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/users', 'UserController@index');
 Route:: resource ('worksch', 'WorkSchController');
-Route:: resource ('daily_reminder', 'dailyreminder');
