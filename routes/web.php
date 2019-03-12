@@ -63,3 +63,5 @@ Route::get('/user/users', 'UserController@index');
 Route:: resource ('worksch', 'WorkSchController');
 Route:: resource ('sleep_estimation', 'SleepEstimationController');
 Route:: resource ('calorie_estimation', 'CalorieEstimationController');
+Route:: resource ('exercise_estimation', 'ExerciseEstimationController');
+Route::get('my-chart', 'ChartController@index'); 

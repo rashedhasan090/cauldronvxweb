@@ -1,0 +1,70 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use DB; 
+
+class HomeController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        $data = DB::table('personalschedule')
+        ->select (
+                DB::raw('id as id '),
+              DB::raw('weekday as weekday '),
+                DB::raw('wakeuptime as wakeuptime '),
+                DB::raw('bfasttime as bfasttime'),
+                 DB::raw('exercise as exercise'),
+                  DB::raw('goingtowork as goingtowork'),
+                    DB::raw('startworkingat as startworkingat'),
+                    DB::raw('returnhome as returnhome'),
+                      DB::raw('eveningactivity as eveningactivity'),
+                         DB::raw('watchingtv as watchingtv'),
+                         DB::raw('bedtime as bedtime')) 
+
+
+
+->get(); 
+$array[] = ['weekday', 'wakeuptime',  'bfasttime', 'exercise', 'goingtowork', 'startworkingat', 'returnhome', 'eveningactivity', 'watchingtv', 'bedtime']; 
+
+
+foreach ($data as $key => $value )
+
+{
+    $array[++$key] = [$value->weekday, $value->wakeuptime,$value->bfasttime, $value->exercise, $value->goingtowork, $value->startworkingat, $value->returnhome, $value->eveningactivity, $value->watchingtv, $value->bedtime  ]; 
+}
+return view ('home')-> with ('id', json_encode($array)); 
+        
+        }
+
+
+
+
+
+
+        public function show($id)
+        {
+            $exerciseestimation = ExerciseEstimation::all()->toArray(); 
+    
+           
+            return view('home' , compact('exerciseestimation')) ; 
+        }
+
+    }
+
