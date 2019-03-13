@@ -50,7 +50,7 @@ class WorkSchController extends Controller
         $workschedule->save(); 
 
        
-         return redirect()->back()->with('success', 'Your Schedule has been saved');
+        return redirect('/worksch/show')->with('success', 'Your Data is saved');
     }
 
     /**
@@ -61,7 +61,10 @@ class WorkSchController extends Controller
      */
     public function show($id)
     {
-        //
+        $workschedule = Working::all()->toArray(); 
+
+       
+        return view('worksch.show' , compact('workschedule')) ; 
     }
 
     /**

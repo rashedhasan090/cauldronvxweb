@@ -45,7 +45,7 @@ class monthlyReminderController extends Controller
         $monthlyreminder->save(); 
 
        
-         return redirect()->back()->with('success', 'Your Reminder has been saved');
+        return redirect('/monthly_rem/show')->with('success', 'Your Data is saved');
     }
 
     /**
@@ -56,7 +56,10 @@ class monthlyReminderController extends Controller
      */
     public function show($id)
     {
-        //
+        $monthlyreminder = MonthlyReminder::all()->toArray(); 
+
+       
+        return view('monthly_rem.show' , compact('monthlyreminder')) ; 
     }
 
     /**

@@ -691,16 +691,16 @@
 </style> 
 
 
-<a class="button" href="#">Your Personal Schedule</a>
-<a class="buttona" href="#">Your Work Schedule</a>
+<a class="button" href="/lsapp/public/pages_inside/show">Your Personal Schedule</a>
+<a class="buttona" href="/lsapp/public/worksch/show">Your Work Schedule</a>
   <br> 
   <br> 
-  <a class="buttonb" href="#">Your Daily Reminder</a>
+  <a class="buttonb" href="/lsapp/public/daily_rem/show">Your Daily Reminder</a>
   <a class="buttonc" href="#">Your Weekly Reminder</a>
-  <a class="buttond" href="#">Your Monthly Reminder</a> 
+  <a class="buttond" href="lsapp/public/monthly_rem/show">Your Monthly Reminder</a> 
 <br>
 <br>
-<a class="buttone" href="#">Your Yearly Reminder</a>
+<a class="buttone" href="/lsapp/public/yearly_reminder/show">Your Yearly Reminder</a>
   <br> 
   <br> 
   <a class="buttonf" href="/lsapp/public/sleep_estimation/show">Sleep Estimation</a>

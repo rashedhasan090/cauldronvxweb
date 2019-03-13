@@ -60,7 +60,10 @@ class WorkScheduleController extends Controller
      */
     public function show($id)
     {
-        //
+        $workschedule = Working::all()->toArray(); 
+
+       
+        return view('worksch.show' , compact('workschedule')) ; 
     }
 
     /**

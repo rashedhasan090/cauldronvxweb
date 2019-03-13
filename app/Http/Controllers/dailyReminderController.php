@@ -45,7 +45,7 @@ class dailyReminderController extends Controller
         
         $dailyrem->save(); 
 
-        return redirect()->back()->with('success', 'Your Schedule has been saved');
+        return redirect('/daily_rem/show')->with('success', 'Your Data is saved');
 
 
 
@@ -59,7 +59,11 @@ class dailyReminderController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        $dailyrem = dailyreminderModel::all()->toArray(); 
+
+       
+        return view('daily_rem.show' , compact('dailyrem')) ; 
     }
 
     /**

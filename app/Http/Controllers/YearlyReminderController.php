@@ -51,7 +51,7 @@ class YearlyReminderController extends Controller
         $yearlyreminder->save(); 
 
        
-         return redirect()->back()->with('success', 'Your Reminder has been saved');
+        return redirect('/yearly_reminder/show')->with('success', 'Your Data is saved');
     }
 
     /**
@@ -62,7 +62,10 @@ class YearlyReminderController extends Controller
      */
     public function show($id)
     {
-        //
+        $yearlyreminder = YearlyReminder::all()->toArray(); 
+
+       
+        return view('yearly_reminder.show' , compact('yearlyreminder')) ; 
     }
 
     /**

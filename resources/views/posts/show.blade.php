@@ -13,7 +13,7 @@
 <hr> 
 
 
-<a href = "/posts/{{$post->id }}/edit" class = "btn btn-default"> Edit </a> 
+<a href = "/lsapp/public/posts/{{$post->id }}/edit" class = "btn btn-default"> Edit </a> 
 
 
 {{Form:: submit('Delete', ['class ' => 'btn btn-danger '])}}

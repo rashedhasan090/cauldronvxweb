@@ -54,7 +54,7 @@ class PersonalScheduleMaintain extends Controller
         $personalschedule->save(); 
 
        
-         return redirect()->back()->with('success', 'Your Schedule has been saved');
+        return redirect('/pages_inside/show')->with('success', 'Your Data is saved');
     }
 
     /**
@@ -65,7 +65,10 @@ class PersonalScheduleMaintain extends Controller
      */
     public function show($id)
     {
-        //
+        $personalschedule = personalschedule::all()->toArray(); 
+
+       
+        return view('pages_inside.show' , compact('personalschedule')) ; 
     }
 
     /**

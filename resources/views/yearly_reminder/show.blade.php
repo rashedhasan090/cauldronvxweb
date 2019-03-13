@@ -3,30 +3,40 @@
 @section('title', 'Cauldron VX')
 
 @section('content_header')
-    <h1>Estimate How Much calories you need </h1>
+    <h1>Check Your yearly Reminders </h1>
 @stop
 
 @section('content')
 <table class = "table table-bordered">
 <tr> 
-<th>Your Sleephours</th>
-<th>Your gender </th>
-<th>Your Active Hours </th>
-<th>Your Waterliter </th>
-<th>Your Exercisehours</th>
-<th>Medicine</th>
+<th>Year </th>
+<th>Month  </th>
+<th>Day</th>
+<th>Event</th>
+<th>Birthday</th>
+<th>Marrige</th>
+<th>Celebration</th>
+<th>Mourning</th>
+<th>National Day</th>
+<th>Your Note  </th>
+
+
 </tr> 
 
 
 
-@foreach ($calorieestimation as $row )
+@foreach ($yearlyreminder as $row )
 <tr> 
-<td>{{$row['sleephours']}} </td> 
-<td>{{$row['gender']}} </td> 
-<td>{{$row['activeworkhours']}} </td> 
-<td>{{$row['waterliter']}} </td> 
-<td>{{$row['exercisehours']}} </td> 
-<td>{{$row['medicine']}} </td> 
+<td>{{$row['whichyear']}} </td> 
+<td>{{$row['whichmonth']}} </td> 
+<td>{{$row['monthday']}} </td> 
+<td>{{$row['yourevent']}} </td> 
+<td>{{$row['birthday']}} </td> 
+<td>{{$row['marrige']}} </td> 
+<td>{{$row['celebration']}} </td> 
+<td>{{$row['mourning']}} </td> 
+<td>{{$row['national']}} </td> 
+<td>{{$row['note']}} </td> 
 </tr> 
 
 
@@ -35,6 +45,7 @@
 
 
 </table >
+
 
 
 
