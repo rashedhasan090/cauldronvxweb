@@ -120,7 +120,7 @@
 					<div class="row">
 						<div class="col-lg-3 col-md-12">
 							<div class="single-footer-widget">
-								<h6>Top Products</h6>
+								<h6>Navigate</h6>
 								<ul class="footer-nav">
 									<li><a href="/lsapp/public/about">About</a></li>
 									<li><a href="/lsapp/public/posts">Discussion</a></li>
