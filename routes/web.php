@@ -63,5 +63,22 @@ Route::get('/user/users', 'UserController@index');
 Route:: resource ('worksch', 'WorkSchController');
 Route:: resource ('sleep_estimation', 'SleepEstimationController');
 Route:: resource ('calorie_estimation', 'CalorieEstimationController');
+Route:: resource ('weekly_reminder', 'WeeklyReminderController');
 Route:: resource ('exercise_estimation', 'ExerciseEstimationController');
 Route::get('my-chart', 'ChartController@index'); 
+Route::get('newsletter',[
+    'uses'=>'NewsLetterController@create',
+    'as'=>'newsletter'
+]);
+Route::post('apply',[
+    'uses'=>'NewsLetterController@store',
+    'as'=>'apply'
+]);
+
+Route::post('apply-two',[
+    'uses'=>'NewsLetterController@autoMail',
+    'as'=>'apply-two'
+]);
+
+
+Route:: resource ('text_to_speech', 'SpeechController');

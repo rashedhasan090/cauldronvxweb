@@ -696,7 +696,7 @@
   <br> 
   <br> 
   <a class="buttonb" href="/lsapp/public/daily_rem/show">Your Daily Reminder</a>
-  <a class="buttonc" href="#">Your Weekly Reminder</a>
+  <a class="buttonc" href="/lsapp/public/weekly_reminder/show">Your Weekly Reminder</a>
   <a class="buttond" href="lsapp/public/monthly_rem/show">Your Monthly Reminder</a> 
 <br>
 <br>
