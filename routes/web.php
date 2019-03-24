@@ -82,3 +82,6 @@ Route::post('apply-two',[
 
 
 Route:: resource ('text_to_speech', 'SpeechController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -710,7 +710,25 @@
 
   <br> 
   <br> 
+<center>
+<h3> Your Posts in Discussion </h3> 
 
+<table class = "table table-striped">
+<tr>
+<th> Title </th> 
+<th> </th> 
+<th> </th> 
+</tr> 
+
+@foreach($posts as  $post)
+<tr>
+<th> {{$post->title}}</th> 
+<th><a href = "/lsapp/public/posts/{{$post->id }}/edit" class= "btn btn-default"> Edit </a> </th> 
+<th> </th> 
+</tr> 
+@endforeach 
+</table> 
+</center> 
   <div style="text-align:center;padding:1em 0;"> <h2><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/en/city/1185241"><span style="color:gray;"></span><br /></a></h2> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=large&timezone=Asia%2FDhaka" width="100%" height="140" frameborder="0" seamless></iframe> </div>
   
 @stop
