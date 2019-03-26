@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\YearlyReminder; 
+use App\User; 
 use DB; 
 
 class YearlyReminderController extends Controller
@@ -15,6 +16,9 @@ class YearlyReminderController extends Controller
      */
     public function index()
     {
+
+
+        
         return view ('yearly_reminder.index'); 
     }
 
@@ -47,7 +51,7 @@ class YearlyReminderController extends Controller
         $yearlyreminder->mourning = $request->input('mourning');
         $yearlyreminder->national = $request->input('national');
         $yearlyreminder->note = $request->input('note');
-       
+        $yearlyreminder->user_id = auth()->user()->id; 
         $yearlyreminder->save(); 
 
        
@@ -62,10 +66,12 @@ class YearlyReminderController extends Controller
      */
     public function show($id)
     {
-        $yearlyreminder = YearlyReminder::all()->toArray(); 
 
+        $user_id = auth()->user()->id ; 
+        $user = User::find($user_id); 
+        return view('yearly_reminder.show')->with ('yearlyreminder' , $user->yearlyreminder) ;
        
-        return view('yearly_reminder.show' , compact('yearlyreminder')) ; 
+        
     }
 
     /**
