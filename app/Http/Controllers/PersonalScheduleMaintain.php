@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\personalschedule; 
+use App\User; 
 use DB; 
 
 class PersonalScheduleMaintain extends Controller
@@ -51,6 +52,7 @@ class PersonalScheduleMaintain extends Controller
         $personalschedule->eveningactivity = $request -> input ('eveningactivity');
         $personalschedule->watchingtv = $request -> input ('watchingtv'); 
         $personalschedule->bedtime = $request -> input ('bedtime'); 
+        $personalschedule->user_id = auth()->user()->id; 
         $personalschedule->save(); 
 
        
@@ -65,10 +67,11 @@ class PersonalScheduleMaintain extends Controller
      */
     public function show($id)
     {
-        $personalschedule = personalschedule::all()->toArray(); 
-
-       
-        return view('pages_inside.show' , compact('personalschedule')) ; 
+        
+        
+        $user_id = auth()->user()->id ; 
+        $user = User::find($user_id); 
+        return view('pages_inside.show')->with ('personalschedule' , $user->personalschedule) ;
     }
 
     /**

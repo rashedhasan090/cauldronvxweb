@@ -32,10 +32,23 @@ class User extends Authenticatable
 
         return $this->hasMany('App\Post'); 
     }
-
+    
 
     public function yearlyreminder() {
 
         return $this->hasMany('App\YearlyReminder'); 
     }
+
+
+    public function personalschedule() {
+
+        return $this->hasMany('App\personalschedule'); 
+    }
+
+
+    public function workschedule() {
+
+        return $this->hasMany('App\Working'); 
+    }
 }
+

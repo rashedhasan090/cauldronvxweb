@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Working; 
+use App\User; 
 use DB; 
 
 class WorkSchController extends Controller
@@ -47,6 +48,7 @@ class WorkSchController extends Controller
         $workschedule->project = $request -> input ('project');
         $workschedule->signout = $request -> input ('signout'); 
         $workschedule->addown = $request -> input ('addown'); 
+        $workschedule->user_id = auth()->user()->id; 
         $workschedule->save(); 
 
        
@@ -61,10 +63,11 @@ class WorkSchController extends Controller
      */
     public function show($id)
     {
-        $workschedule = Working::all()->toArray(); 
-
        
-        return view('worksch.show' , compact('workschedule')) ; 
+
+        $user_id = auth()->user()->id ; 
+        $user = User::find($user_id); 
+        return view('worksch.show')->with ('workschedule' , $user->workschedule) ;
     }
 
     /**
