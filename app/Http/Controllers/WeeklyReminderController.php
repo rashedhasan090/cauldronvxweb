@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\WeeklyReminder; 
+use App\User; 
 use DB; 
 
 class WeeklyReminderController extends Controller
@@ -45,7 +46,7 @@ class WeeklyReminderController extends Controller
         $weeklyreminder ->mourning = $request->input('mourning');
         $weeklyreminder ->national = $request->input('national');
         $weeklyreminder ->other = $request->input('other');
-       
+        $weeklyreminder->user_id = auth()->user()->id; 
         $weeklyreminder ->save(); 
         return redirect('/weekly_reminder/show')->with('success', 'Your Data is saved');
     }
@@ -58,10 +59,10 @@ class WeeklyReminderController extends Controller
      */
     public function show($id)
     {
-        $weeklyreminder = WeeklyReminder::all()->toArray(); 
-
-       
-        return view('weekly_reminder.show' , compact('weeklyreminder')) ; 
+        
+        $user_id = auth()->user()->id ; 
+        $user = User::find($user_id); 
+        return view('weekly_reminder.show')->with ('weeklyreminder' , $user->weeklyreminder) ;
     }
 
     /**

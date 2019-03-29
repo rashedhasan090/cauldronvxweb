@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\dailyreminderModel; 
+use App\User;
 use DB; 
 
 class dailyReminderController extends Controller
@@ -42,7 +43,7 @@ class dailyReminderController extends Controller
         $dailyrem->weekday = $request->input('weekday');
         $dailyrem->yourevent = $request -> input ('yourevent');
         $dailyrem->note = $request -> input('note');
-        
+        $dailyrem->user_id = auth()->user()->id;
         $dailyrem->save(); 
 
         return redirect('/daily_rem/show')->with('success', 'Your Data is saved');
@@ -60,10 +61,14 @@ class dailyReminderController extends Controller
     public function show($id)
     {
         
-        $dailyrem = dailyreminderModel::all()->toArray(); 
-
        
-        return view('daily_rem.show' , compact('dailyrem')) ; 
+
+        $user_id = auth()->user()->id ; 
+        $user = User::find($user_id); 
+        return view('daily_rem.show')->with ('dailyrem' , $user->dailyrem) ;
+
+
+
     }
 
     /**

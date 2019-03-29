@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CalorieEstimation;
+use App\User;
 use DB; 
 
 
@@ -46,7 +47,7 @@ class CalorieEstimationController extends Controller
         $calorieestimation->waterliter = $request->input('waterliter');
         $calorieestimation->exercisehours = $request->input('exercisehours');
         $calorieestimation->medicine = $request->input('medicine');
-       
+        $calorieestimation->user_id = auth()->user()->id;
        
         $calorieestimation->save(); 
         return redirect('/calorie_estimation/show')->with('success', 'Your Data is saved');
@@ -67,11 +68,9 @@ class CalorieEstimationController extends Controller
     {
        
 
-        $calorieestimation = CalorieEstimation::all()->toArray(); 
-
-       
-        return view('calorie_estimation.show' , compact('calorieestimation')) ; 
-
+        $user_id = auth()->user()->id ; 
+        $user = User::find($user_id); 
+        return view('calorie_estimation.show')->with ('calorieestimation' , $user->calorieestimation) ;
 
 
     }

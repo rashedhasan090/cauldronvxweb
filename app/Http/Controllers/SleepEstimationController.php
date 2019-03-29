@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SleepEstimation ; 
+use App\User; 
 use DB; 
 
 
@@ -43,8 +44,7 @@ class SleepEstimationController extends Controller
         $sleepestimation->exercisehours = $request -> input('exercisehours');
         $sleepestimation->age = $request->input('age');
         $sleepestimation->calories = $request->input('calories');
-       
-       
+        $sleepestimation->user_id = auth()->user()->id; 
         $sleepestimation->save(); 
         return redirect('/sleep_estimation/show')->with('success', 'Your Data is saved');
     }
@@ -58,12 +58,10 @@ class SleepEstimationController extends Controller
     public function show($id)
     {
        
-       $sleepestimation = SleepEstimation::all()->toArray(); 
-
-       
-        return view('sleep_estimation.show' , compact('sleepestimation')) ; 
-
-
+     
+        $user_id = auth()->user()->id ; 
+        $user = User::find($user_id); 
+        return view('sleep_estimation.show')->with ('sleepestimation' , $user->sleepestimation) ;
     
     }
 

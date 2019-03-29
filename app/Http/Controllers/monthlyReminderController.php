@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MonthlyReminder ; 
-
+use App\User ; 
 class monthlyReminderController extends Controller
 {
     /**
@@ -41,7 +41,7 @@ class monthlyReminderController extends Controller
         $monthlyreminder->yourevent = $request -> input('yourevent');
         $monthlyreminder->relatedtowork = $request->input('relatedtowork');
         $monthlyreminder->note = $request->input('note');
-       
+        $monthlyreminder->user_id = auth()->user()->id; 
         $monthlyreminder->save(); 
 
        
@@ -56,10 +56,12 @@ class monthlyReminderController extends Controller
      */
     public function show($id)
     {
-        $monthlyreminder = MonthlyReminder::all()->toArray(); 
-
        
-        return view('monthly_rem.show' , compact('monthlyreminder')) ; 
+
+         
+        $user_id = auth()->user()->id ; 
+        $user = User::find($user_id); 
+        return view('monthly_rem.show')->with ('monthlyreminder' , $user->monthlyreminder) ;
     }
 
     /**

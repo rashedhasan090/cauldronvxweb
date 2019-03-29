@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ExerciseEstimation;
+use App\User; 
 use DB; 
 
 class ExerciseEstimationController extends Controller
@@ -43,7 +44,7 @@ class ExerciseEstimationController extends Controller
         $exerciseestimation ->height = $request -> input ('height');
         $exerciseestimation ->weight = $request -> input('weight');
         $exerciseestimation  ->workhours = $request->input('workhours');
-       
+        $exerciseestimation->user_id = auth()->user()->id; 
        
        
         $exerciseestimation ->save(); 
@@ -61,10 +62,11 @@ class ExerciseEstimationController extends Controller
      */
     public function show($id)
     {
-        $exerciseestimation = ExerciseEstimation::all()->toArray(); 
-
-       
-        return view('exercise_estimation.show' , compact('exerciseestimation')) ; 
+      
+         
+        $user_id = auth()->user()->id ; 
+        $user = User::find($user_id); 
+        return view('exercise_estimation.show')->with ('exerciseestimation' , $user->exerciseestimation) ;
     }
 
     /**

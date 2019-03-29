@@ -50,5 +50,39 @@ class User extends Authenticatable
 
         return $this->hasMany('App\Working'); 
     }
+
+    public function weeklyreminder() {
+
+        return $this->hasMany('App\WeeklyReminder'); 
+    }
+
+
+    public function MonthlyReminder() {
+
+        return $this->hasMany('App\MonthlyReminder'); 
+    }
+
+
+    public function SleepEstimation() {
+
+        return $this->hasMany('App\SleepEstimation'); 
+    }
+
+    public function CalorieEstimation() {
+
+        return $this->hasMany('App\CalorieEstimation'); 
+    }
+
+
+    public function dailyreminderModel() {
+
+        return $this->hasMany('App\dailyreminderModel'); 
+    }
+
+
+    public function ExerciseEstimation() {
+
+        return $this->hasMany('App\ExerciseEstimation'); 
+    }
 }
 
