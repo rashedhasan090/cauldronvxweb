@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UserInfo; 
 use App\User; 
-
-class UserController extends Controller
+class UserProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all(); 
-    return view ('user.index');
-
-
+       
+        return view('profile.show'); 
     }
 
     /**
@@ -49,7 +47,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user_id = auth()->user()->id ; 
+        $user = User::find($user_id); 
+        return view('profile.show')->with ('users' , $user->users) ;
     }
 
     /**

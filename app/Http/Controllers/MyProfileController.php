@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User; 
+use App\MyProfile ; 
+use App\User ; 
 
-class UserController extends Controller
+class MyProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all(); 
-    return view ('user.index');
-
-
+        return view ('myprofile.index'); 
     }
 
     /**
@@ -38,7 +36,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $_my_profile  = new MyProfile ; 
+        $_my_profile->fname = $request->input('fname');
+        $_my_profile->lname = $request -> input ('lname');
+        $_my_profile->phone = $request -> input('phone');
+        $_my_profile->address = $request->input('address');
+        $_my_profile->occupation = $request->input('occupation');
+        $_my_profile->Age = $request->input('Age');
+        $_my_profile->user_id = auth()->user()->id; 
+        $_my_profile->save(); 
+
+       
+        return redirect('/myprofile/show')->with('success', 'Your Data is saved');
     }
 
     /**
@@ -49,7 +58,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        
+         
+        $user_id = auth()->user()->id ; 
+        $user = User::find($user_id); 
+        return view('myprofile.show')->with ('_my_profile' , $user->_my_profile) ;
     }
 
     /**

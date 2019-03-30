@@ -59,12 +59,13 @@ Route:: resource ('yearly_reminder', 'YearlyReminderController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/user/users', 'UserController@index');
+Route:: resource('user', 'UserController' );
 Route:: resource ('worksch', 'WorkSchController');
 Route:: resource ('sleep_estimation', 'SleepEstimationController');
 Route:: resource ('calorie_estimation', 'CalorieEstimationController');
 Route:: resource ('weekly_reminder', 'WeeklyReminderController');
 Route:: resource ('exercise_estimation', 'ExerciseEstimationController');
+Route:: resource ('myprofile', 'MyProfileController');
 Route::get('my-chart', 'ChartController@index'); 
 Route::get('newsletter',[
     'uses'=>'NewsLetterController@create',
@@ -82,6 +83,7 @@ Route::post('apply-two',[
 
 
 Route:: resource ('text_to_speech', 'SpeechController');
+Route:: resource ('profile', 'UserPofileController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

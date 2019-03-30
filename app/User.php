@@ -84,5 +84,19 @@ class User extends Authenticatable
 
         return $this->hasMany('App\ExerciseEstimation'); 
     }
+
+
+    public function UserInfo() {
+
+        return $this->hasMany('App\UserInfo'); 
+    }
+
+
+
+    
+    public function MyProfile() {
+
+        return $this->hasMany('App\MyProfile'); 
+    }
 }
 
