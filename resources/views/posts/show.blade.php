@@ -12,7 +12,7 @@
 <small> Written on {{$post->created_at}}</small>  
 <hr> 
 
-
+@if(!Auth::guest())
 <a href = "/lsapp/public/posts/{{$post->id }}/edit" class = "btn btn-default"> Edit </a> 
 
 
@@ -20,5 +20,5 @@
 {!!Form::close() !!}
 
 
-
+@endif 
 @endsection 
