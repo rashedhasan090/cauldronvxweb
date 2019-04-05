@@ -13,12 +13,13 @@
 <hr> 
 
 @if(!Auth::guest())
+@if (!Auth::user()->id == $post->user_id)
 <a href = "/lsapp/public/posts/{{$post->id }}/edit" class = "btn btn-default"> Edit </a> 
 
 
 {{Form:: submit('Delete', ['class ' => 'btn btn-danger '])}}
 {!!Form::close() !!}
 
-
+@endif 
 @endif 
 @endsection 
