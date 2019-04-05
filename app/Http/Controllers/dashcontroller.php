@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 
 class dashcontroller extends Controller
 {
+
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function personal() {
    
         return view ('pages_inside.personal');
