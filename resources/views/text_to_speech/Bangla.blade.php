@@ -77,11 +77,11 @@
            
 
 
-<input type = "text" name= "text"> <br> <br> 
-<a href="#" class="say"> Say it! </a> 
+			<input type ="text" name="text">
+<a href="#" class="say">Say it! </a> 
 
-<audio src ="" class = "speech" hidden></audio> 
-<script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<audio src ="" class ="speech" hidden > </audio> 
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" ></script> 
 
 <script>
 $(function() {
@@ -90,11 +90,11 @@ e.preventDefault();
 var text = $('input[name="text"]').val();
 text = encodeURIComponent(text);
 console.log(text);
-var url = "http://translate.google.com/translate_tts?tl=bn&q" + text + "&client=tw-ob" ; 
+var url = "http://translate.google.com/translate_tts?tl=bn&q=" + text +"&client=tw-ob" ;
+
 $('audio').attr('src',url).get(0).play(); 
 });
 });
-
 
 </script> 
 
